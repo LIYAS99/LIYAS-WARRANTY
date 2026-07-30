@@ -4,9 +4,22 @@
 // =================================
 
 
+console.log("Supabase JS Loaded", supabase);
+
+
+
 async function registerWarranty(data) {
 
-    const { customerName, mobile, dealerName, productModel, serialNumber, purchaseDate } = data;
+
+    const { 
+        customerName, 
+        mobile, 
+        dealerName, 
+        productModel, 
+        serialNumber, 
+        purchaseDate 
+    } = data;
+
 
 
     // Check duplicate serial number
@@ -18,12 +31,18 @@ async function registerWarranty(data) {
         .eq("serial_number", serialNumber);
 
 
+
     if(checkError){
+
+        console.log("Duplicate Check Error:", checkError);
+
         return {
             success:false,
-            message:"Database error"
+            message:checkError.message
         };
+
     }
+
 
 
     if(existing.length > 0){
@@ -34,6 +53,7 @@ async function registerWarranty(data) {
         };
 
     }
+
 
 
 
@@ -56,6 +76,8 @@ async function registerWarranty(data) {
 
     if(error){
 
+        console.log("Insert Error:", error);
+
         return {
             success:false,
             message:error.message
@@ -64,9 +86,11 @@ async function registerWarranty(data) {
     }
 
 
+
     return {
         success:true,
         message:"Warranty Registered Successfully"
     };
+
 
 }
