@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LIYAS Warranty</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
 
 <style>
 body{
@@ -36,8 +38,7 @@ font-weight:bold;
 cursor:pointer;
 }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
+
 </head>
 
 <body>
@@ -47,9 +48,7 @@ cursor:pointer;
 <h1>LIYAS Warranty Registration</h1>
 
 <input id="name" placeholder="Customer Name">
-
 <input id="mobile" placeholder="Mobile Number">
-
 <input id="serial" placeholder="Serial Number">
 
 <button onclick="register()">Register Warranty</button>
@@ -57,8 +56,6 @@ cursor:pointer;
 <p id="msg"></p>
 
 </div>
-
-<script>
 
 <script>
 const supabase = window.supabase.createClient(
@@ -92,13 +89,5 @@ async function register() {
 }
 </script>
 
-</script>
-<script>
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
-</script>
 </body>
-
 </html>
