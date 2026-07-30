@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LIYAS Warranty</title>
@@ -35,9 +36,15 @@ font-weight:bold;
 cursor:pointer;
 }
 </style>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
 </head>
-
+<script>
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+</script>
 <body>
 
 <div class="box">
