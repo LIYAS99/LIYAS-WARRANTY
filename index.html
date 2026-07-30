@@ -1,93 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LIYAS Warranty</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIYAS Warranty Portal</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
+    <link rel="stylesheet" href="style.css">
 
-<style>
-body{
-font-family:Arial;
-background:#111;
-color:white;
-text-align:center;
-padding:30px;
-}
-.box{
-background:#222;
-padding:20px;
-border-radius:15px;
-max-width:450px;
-margin:auto;
-}
-input,button{
-width:100%;
-padding:12px;
-margin-top:10px;
-border-radius:8px;
-border:none;
-font-size:16px;
-}
-button{
-background:#00c853;
-color:white;
-font-weight:bold;
-cursor:pointer;
-}
-</style>
-
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="box">
+<header>
+    <div class="logo">
+        <h2>LIYAS</h2>
+    </div>
 
-<h1>LIYAS Warranty Registration</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="register.html">Register Warranty</a>
+        <a href="dealer-login.html">Dealer</a>
+        <a href="admin-login.html">Admin</a>
+    </nav>
+</header>
 
-<input id="name" placeholder="Customer Name">
-<input id="mobile" placeholder="Mobile Number">
-<input id="serial" placeholder="Serial Number">
+<section class="hero">
 
-<button onclick="register()">Register Warranty</button>
+    <h1>Welcome to LIYAS Warranty Portal</h1>
 
-<p id="msg"></p>
+    <p>
+        Activate your product warranty quickly and securely.
+    </p>
 
-</div>
+    <div class="buttons">
 
-<script>
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
+        <a href="register.html" class="btn">
+            Register Warranty
+        </a>
 
-async function register() {
+        <a href="dealer-login.html" class="btn secondary">
+            Dealer Login
+        </a>
 
-  const name = document.getElementById("name").value;
-  const mobile = document.getElementById("mobile").value;
-  const serial = document.getElementById("serial").value;
+    </div>
 
-  const { error } = await supabase
-    .from("warranty_registrations")
-    .insert([
-      {
-        customer_name: name,
-        mobile: mobile,
-        serial_number: serial
-      }
-    ]);
+</section>
 
-  if (error) {
-    document.getElementById("msg").innerText =
-      "❌ Error: " + error.message;
-  } else {
-    document.getElementById("msg").innerText =
-      "✅ Warranty Registered Successfully";
-  }
-}
-</script>
+<section class="features">
+
+    <div class="card">
+        <h3>Instant Warranty</h3>
+        <p>Register your warranty in less than one minute.</p>
+    </div>
+
+    <div class="card">
+        <h3>Secure Database</h3>
+        <p>Your warranty details are stored safely.</p>
+    </div>
+
+    <div class="card">
+        <h3>Dealer Support</h3>
+        <p>Authorized dealers can activate warranty instantly.</p>
+    </div>
+
+</section>
+
+<footer>
+
+    <p>
+        © 2026 LIYAS. All Rights Reserved.
+    </p>
+
+</footer>
 
 </body>
 </html>
