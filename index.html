@@ -60,11 +60,37 @@ cursor:pointer;
 
 <script>
 
-function register(){
+<script>
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
-document.getElementById("msg").innerHTML="Website Successfully Working ✅";
+async function register() {
 
+  const name = document.getElementById("name").value;
+  const mobile = document.getElementById("mobile").value;
+  const serial = document.getElementById("serial").value;
+
+  const { error } = await supabase
+    .from("warranty_registrations")
+    .insert([
+      {
+        customer_name: name,
+        mobile: mobile,
+        serial_number: serial
+      }
+    ]);
+
+  if (error) {
+    document.getElementById("msg").innerText =
+      "❌ Error: " + error.message;
+  } else {
+    document.getElementById("msg").innerText =
+      "✅ Warranty Registered Successfully";
+  }
 }
+</script>
 
 </script>
 <script>
