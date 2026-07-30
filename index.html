@@ -39,12 +39,7 @@ cursor:pointer;
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 </head>
-<script>
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
-</script>
+
 <body>
 
 <div class="box">
@@ -72,7 +67,12 @@ document.getElementById("msg").innerHTML="Website Successfully Working ✅";
 }
 
 </script>
-
+<script>
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+</script>
 </body>
 
 </html>
