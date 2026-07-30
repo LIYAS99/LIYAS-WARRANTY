@@ -1,48 +1,84 @@
-// script.js
+// =================================
+// LIYAS WARRANTY PORTAL
+// Warranty Registration Script
+// =================================
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    const form = document.getElementById("warrantyForm");
+document.addEventListener("DOMContentLoaded", function(){
 
-    if (!form) return;
 
-    form.addEventListener("submit", async function (e) {
+const form = document.getElementById("warrantyForm");
 
-        e.preventDefault();
 
-        const customerName = document.getElementById("customerName").value.trim();
-        const mobile = document.getElementById("mobile").value.trim();
-        const dealerName = document.getElementById("dealerName").value.trim();
-        const productModel = document.getElementById("productModel").value.trim();
-        const serialNumber = document.getElementById("serialNumber").value.trim();
-        const purchaseDate = document.getElementById("purchaseDate").value;
+if(form){
 
-        if (
-            !customerName ||
-            !mobile ||
-            !dealerName ||
-            !productModel ||
-            !serialNumber ||
-            !purchaseDate
-        ) {
-            alert("Please fill all fields.");
-            return;
-        }
 
-        console.log({
-            customerName,
-            mobile,
-            dealerName,
-            productModel,
-            serialNumber,
-            purchaseDate
-        });
+form.addEventListener("submit", async function(e){
 
-        document.getElementById("message").innerHTML =
-            "<span style='color:lime'>Warranty Registered Successfully.</span>";
 
-        form.reset();
+e.preventDefault();
 
-    });
+
+
+const data = {
+
+customerName:
+document.getElementById("customerName").value.trim(),
+
+mobile:
+document.getElementById("mobile").value.trim(),
+
+dealerName:
+document.getElementById("dealerName").value.trim(),
+
+productModel:
+document.getElementById("productModel").value.trim(),
+
+serialNumber:
+document.getElementById("serialNumber").value.trim(),
+
+purchaseDate:
+document.getElementById("purchaseDate").value
+
+};
+
+
+
+const result = await registerWarranty(data);
+
+
+
+const message =
+document.getElementById("message");
+
+
+
+if(result.success){
+
+
+message.innerHTML =
+"<span style='color:#00ff00'>"+result.message+"</span>";
+
+form.reset();
+
+
+}
+else{
+
+
+message.innerHTML =
+"<span style='color:red'>"+result.message+"</span>";
+
+
+}
+
+
+
+});
+
+
+}
+
+
 
 });
