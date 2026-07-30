@@ -46,6 +46,7 @@ document.getElementById("purchaseDate").value
 
 console.log("From Data:", data);
 const result = await registerWarranty(data);
+alert(JSON.stringify(result));
 console.log("Result:", result);
 
 
