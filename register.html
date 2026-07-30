@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register Warranty | LIYAS</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="supabase.js"></script>
+<script src="script.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Warranty Registration</h1>
+
+<form id="warrantyForm">
+
+<input
+type="text"
+id="customerName"
+placeholder="Customer Name"
+required>
+
+<input
+type="tel"
+id="mobile"
+placeholder="Mobile Number"
+required>
+
+<input
+type="text"
+id="dealerName"
+placeholder="Dealer Name"
+required>
+
+<input
+type="text"
+id="productModel"
+placeholder="Product Model"
+required>
+
+<input
+type="text"
+id="serialNumber"
+placeholder="Serial Number"
+required>
+
+<input
+type="date"
+id="purchaseDate"
+required>
+
+<button type="submit">
+Register Warranty
+</button>
+
+</form>
+
+<br>
+
+<a href="index.html">
+⬅ Back to Home
+</a>
+
+<p id="message"></p>
+
+</div>
+
+</body>
+</html>
