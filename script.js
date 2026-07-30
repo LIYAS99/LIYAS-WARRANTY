@@ -44,9 +44,9 @@ document.getElementById("purchaseDate").value
 };
 
 
-const.log("From Data:",data);
+console.log("From Data:", data);
 const result = await registerWarranty(data);
-const.log("Result:",result);
+console.log("Result:", result);
 
 
 const message =
