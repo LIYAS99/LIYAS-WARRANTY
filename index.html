@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIYAS Warranty</title>
+
+<style>
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+padding:30px;
+}
+.box{
+background:#222;
+padding:20px;
+border-radius:15px;
+max-width:450px;
+margin:auto;
+}
+input,button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:8px;
+border:none;
+font-size:16px;
+}
+button{
+background:#00c853;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>LIYAS Warranty Registration</h1>
+
+<input id="name" placeholder="Customer Name">
+
+<input id="mobile" placeholder="Mobile Number">
+
+<input id="serial" placeholder="Serial Number">
+
+<button onclick="register()">Register Warranty</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+
+function register(){
+
+document.getElementById("msg").innerHTML="Website Successfully Working ✅";
+
+}
+
+</script>
+
+</body>
+
+</html>
