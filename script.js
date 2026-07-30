@@ -1,3 +1,4 @@
+alert("Script Loaded");
 // =================================
 // LIYAS WARRANTY PORTAL
 // Warranty Registration Script
