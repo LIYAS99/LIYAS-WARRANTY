@@ -4,8 +4,8 @@ console.log("window.supabase =", window.supabase);
 
 console.log("createClient =", window.supabase.createClient);
 
-const SUPABASE_URL = "APNA_PROJECT_URL";
-const SUPABASE_ANON_KEY = "APNI_ANON_KEY";
+const SUPABASE_URL = "https://qhuygccueklrlmrmsavi.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFodXlnY2N1ZWtscmxtcm1zYXZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU0MjcyNTUsImV4cCI6MjEwMTAwMzI1NX0.168BBeR0BvrjCu-MRu2FTA05oTzXc9aXDrOWJHIejKA";
 
 const supabase = window.supabase.createClient(
     SUPABASE_URL,
