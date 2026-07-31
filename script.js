@@ -1,3 +1,4 @@
+alert("CONFIG FILE LOADED");
 document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("warrantyForm");
