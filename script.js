@@ -3,7 +3,7 @@
 // New Script Version 2
 // =================================
 
-alert("LIYAS NEW SCRIPT LOADED v2");
+alert("LIYAS NEW SCRIPT LOADED v3");
 
 
 document.addEventListener("DOMContentLoaded", function () {
