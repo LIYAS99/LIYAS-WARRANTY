@@ -1,101 +1,66 @@
-// =================================
+// ======================================
 // LIYAS WARRANTY PORTAL
-// New Script Version 2
-// =================================
+// script.js v2
+// ======================================
 
-alert("LIYAS NEW SCRIPT LOADED v3");
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
+document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("warrantyForm");
+    const message = document.getElementById("message");
+    const button = document.getElementById("registerBtn");
 
+    if (!form) return;
 
-    if (!form) {
-        console.log("Warranty form not found");
-        return;
-    }
-
-
-
-    form.addEventListener("submit", async function (e) {
-
+    form.addEventListener("submit", async (e) => {
 
         e.preventDefault();
 
+        button.disabled = true;
+        button.innerHTML = "Registering...";
+
+        message.innerHTML = "";
+
+        const today = new Date().toISOString().split("T")[0];
 
         const data = {
-
             customerName: document.getElementById("customerName").value.trim(),
-
             mobile: document.getElementById("mobile").value.trim(),
-
             dealerName: document.getElementById("dealerName").value.trim(),
-
             productModel: document.getElementById("productModel").value.trim(),
-
             serialNumber: document.getElementById("serialNumber").value.trim(),
-
-            purchaseDate: document.getElementById("purchaseDate").value
-
+            purchaseDate: today
         };
-
-
-
-        const message = document.getElementById("message");
-
-
-        message.innerHTML = "Saving Warranty...";
-
-
 
         try {
 
-
             const result = await registerWarranty(data);
-
-
-
-            console.log("Supabase Result:", result);
-
-
 
             if (result.success) {
 
-
                 message.innerHTML =
-                "<span style='color:red'>" + error.message + "</span>";
-
+                    "<span style='color:#00cc66;font-weight:bold;'>✅ Warranty Registered Successfully</span>";
 
                 form.reset();
 
-
             } else {
 
-
                 message.innerHTML =
-                "<span style='color:red'>" + result.message + "</span>";
-
+                    "<span style='color:red;font-weight:bold;'>" + result.message + "</span>";
 
             }
 
-
-
         } catch (error) {
 
-
-            console.error("Error:", error);
-
+            console.error(error);
 
             message.innerHTML =
-            "<span style='color:red'>Error Connecting Database</span>";
+                "<span style='color:red;font-weight:bold;'>Database Connection Error</span>";
 
         }
 
+        button.disabled = false;
+        button.innerHTML = "Register Warranty";
 
     });
-
-
 
 });
