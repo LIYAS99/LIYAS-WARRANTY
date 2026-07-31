@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Register Warranty | LIYAS</title>
+<title>LIYAS Warranty Registration</title>
 
 <link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-<script src="supabase.js"></script>
-<script src="script.js" defer></script>
+
+<script src="config.js?v=2"></script>
+<script src="supabase.js?v=2"></script>
+<script src="script.js?v=2" defer></script>
 
 </head>
 
@@ -53,24 +55,17 @@ id="serialNumber"
 placeholder="Serial Number"
 required>
 
-<input
-type="date"
-id="purchaseDate"
-required>
-
-<button type="submit">
+<button id="registerBtn" type="submit">
 Register Warranty
 </button>
 
 </form>
 
+<p id="message"></p>
+
 <br>
 
-<a href="index.html">
-⬅ Back to Home
-</a>
-
-<p id="message"></p>
+<a href="index.html">⬅ Back to Home</a>
 
 </div>
 
