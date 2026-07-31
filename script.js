@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 message.innerHTML =
-                "<span style='color:lime'>Warranty Registered Successfully</span>";
+                "<span style='color:red'>" + error.message + "</span>";
 
 
                 form.reset();
