@@ -1,83 +1,71 @@
-// ======================================
+// =====================================
 // LIYAS WARRANTY PORTAL
 // supabase.js
-// ======================================
+// =====================================
 
 async function registerWarranty(data) {
 
     try {
 
-        const {
-            customerName,
-            mobile,
-            dealerName,
-            productModel,
-            serialNumber,
-            purchaseDate
-        } = data;
+        const { data: duplicate, error: duplicateError } =
+        await window.db
+        .from("warranties")
+        .select("serial_number")
+        .eq("serial_number", data.serialNumber);
 
-        // Duplicate Check
-        const { data: existing, error: checkError } = await supabase
-            .from("warranties")
-            .select("serial_number")
-            .eq("serial_number", serialNumber);
-
-        if (checkError) {
-            console.log("Duplicate Check Error:", checkError);
-
+        if (duplicateError) {
             return {
-                success: false,
-                message: checkError.message
+                success:false,
+                message:duplicateError.message
             };
         }
 
-        if (existing.length > 0) {
-            return {
-                success: false,
-                message: "Serial Number Already Registered"
+        if (duplicate.length > 0){
+            return{
+                success:false,
+                message:"Serial Number Already Registered"
             };
         }
 
-        // Insert Data
-        const { data: insertedData, error: insertError } = await supabase
-            .from("warranties")
-            .insert([
-                {
-                    customer_name: customerName,
-                    mobile: mobile,
-                    dealer_name: dealerName,
-                    product_model: productModel,
-                    serial_number: serialNumber,
-                    purchase_date: purchaseDate
-                }
-            ])
-            .select();
+        const { error } =
+        await window.db
+        .from("warranties")
+        .insert([
 
-        if (insertError) {
+            {
+                customer_name:data.customerName,
+                mobile:data.mobile,
+                dealer_name:data.dealerName,
+                product_model:data.productModel,
+                serial_number:data.serialNumber,
+                purchase_date:data.purchaseDate
+            }
 
-            console.log("Insert Error:", insertError);
+        ]);
 
-            return {
-                success: false,
-                message: insertError.message
+        if(error){
+
+            return{
+                success:false,
+                message:error.message
             };
 
         }
 
-        console.log("Inserted:", insertedData);
+        return{
 
-        return {
-            success: true,
-            message: "Warranty Registered Successfully"
+            success:true,
+            message:"Warranty Registered Successfully"
+
         };
 
-    } catch (err) {
+    }catch(err){
 
-        console.log("Supabase Exception:", err);
+        return{
 
-        return {
-            success: false,
-            message: err.message
+            success:false,
+            message:err.message
+
         };
 
     }
