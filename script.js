@@ -1,60 +1,57 @@
-// ======================================
-// LIYAS WARRANTY PORTAL
-// script.js v2
-// ======================================
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("warrantyForm");
     const message = document.getElementById("message");
     const button = document.getElementById("registerBtn");
 
-    if (!form) return;
+    if (!form) {
+        alert("FORM NOT FOUND");
+        return;
+    }
 
-    form.addEventListener("submit", async (e) => {
+    alert("SCRIPT LOADED");
+
+    form.addEventListener("submit", async function(e){
 
         e.preventDefault();
 
         button.disabled = true;
         button.innerHTML = "Registering...";
 
-        message.innerHTML = "";
+        message.innerHTML = "<span style='color:yellow'>Step 1 : Button Click OK</span>";
 
-        const today = new Date().toISOString().split("T")[0];
+        await new Promise(resolve => setTimeout(resolve,1000));
 
-        const data = {
-            customerName: document.getElementById("customerName").value.trim(),
-            mobile: document.getElementById("mobile").value.trim(),
-            dealerName: document.getElementById("dealerName").value.trim(),
-            productModel: document.getElementById("productModel").value.trim(),
-            serialNumber: document.getElementById("serialNumber").value.trim(),
-            purchaseDate: today
-        };
+        message.innerHTML = "<span style='color:lime'>Step 2 : Script Working OK</span>";
 
-        try {
+        await new Promise(resolve => setTimeout(resolve,1000));
 
-            const result = await registerWarranty(data);
+        message.innerHTML = "<span style='color:cyan'>Step 3 : Now Calling Supabase...</span>";
 
-            if (result.success) {
+        try{
 
-                message.innerHTML =
-                    "<span style='color:#00cc66;font-weight:bold;'>✅ Warranty Registered Successfully</span>";
+            const result = await registerWarranty({
 
-                form.reset();
+                customerName: document.getElementById("customerName").value.trim(),
+                mobile: document.getElementById("mobile").value.trim(),
+                dealerName: document.getElementById("dealerName").value.trim(),
+                productModel: document.getElementById("productModel").value.trim(),
+                serialNumber: document.getElementById("serialNumber").value.trim(),
+                purchaseDate: new Date().toISOString().split("T")[0]
 
-            } else {
-
-                message.innerHTML =
-                    "<span style='color:red;font-weight:bold;'>" + result.message + "</span>";
-
-            }
-
-        } catch (error) {
-
-            console.error(error);
+            });
 
             message.innerHTML =
-                "<span style='color:red;font-weight:bold;'>Database Connection Error</span>";
+            "<span style='color:lime'>Step 4 : Supabase Returned -> "
+            + JSON.stringify(result) +
+            "</span>";
+
+        }catch(err){
+
+            message.innerHTML =
+            "<span style='color:red'>Step 4 ERROR : "
+            + err.message +
+            "</span>";
 
         }
 
