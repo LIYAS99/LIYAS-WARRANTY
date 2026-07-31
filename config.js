@@ -1,3 +1,4 @@
+alert("CONFIG FILE LOADED");
 // TEST CONFIG
 
 console.log("window.supabase =", window.supabase);
